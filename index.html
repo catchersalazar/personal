@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catcher Salazar | Curator of Interests</title>
     <style>
-        /* Previous CSS styles remain the same until .grid */
+        /* All existing CSS styles remain the same */
         :root {
             --primary-color: #2d3436;
             --secondary-color: #636e72;
@@ -60,7 +60,6 @@
             padding: 0 2rem;
         }
 
-        /* Updated navigation styles */
         .navigation {
             display: flex;
             justify-content: center;
@@ -94,7 +93,6 @@
             background-color: var(--accent-color);
         }
 
-        /* Updated grid styles for centering */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -113,15 +111,6 @@
             transition: transform 0.3s ease;
             width: 100%;
             max-width: 350px;
-        }
-
-        /* Tab content styles */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
         }
 
         .card:hover {
@@ -175,104 +164,89 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* New styles for handling content visibility */
+        .content-grid {
+            display: none;
+        }
+
+        .content-grid.active {
+            display: grid;
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/150" alt="Catcher Salazar" class="profile-img">
+        <img src="/api/placeholder/150/150" alt="Catcher Salazar" class="profile-img">
         <h1>Catcher Salazar</h1>
         <p class="subtitle">Curator of Ideas & Inspiration</p>
         <nav class="navigation">
-            <a class="nav-link active" data-tab="all">All</a>
-            <a class="nav-link" data-tab="science">Science</a>
-            <a class="nav-link" data-tab="literature">Literature</a>
-            <a class="nav-link" data-tab="art">Art</a>
-            <a class="nav-link" data-tab="poetry">Poetry</a>
-            <a class="nav-link" data-tab="music">Music</a>
+            <a class="nav-link active" data-category="all">All</a>
+            <a class="nav-link" data-category="science">Science</a>
+            <a class="nav-link" data-category="literature">Literature</a>
+            <a class="nav-link" data-category="art">Art</a>
+            <a class="nav-link" data-category="poetry">Poetry</a>
+            <a class="nav-link" data-category="music">Music</a>
         </nav>
     </header>
 
     <div class="container">
-        <div id="all" class="tab-content active">
-            <div class="grid">
-                <!-- All cards will be shown here -->
-            </div>
-        </div>
-        
-        <div id="science" class="tab-content">
-            <div class="grid">
-                <!-- Science cards -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" alt="Neuroscience Research">
-                    <div class="card-content">
-                        <div class="card-category">Science</div>
-                        <h3 class="card-title">Neural Networks and Consciousness</h3>
-                        <p class="card-description">Recent developments in understanding consciousness through the lens of computational neuroscience.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" alt="Physics Discovery">
-                    <div class="card-content">
-                        <div class="card-category">Science</div>
-                        <h3 class="card-title">Dark Matter Detection</h3>
-                        <p class="card-description">Latest experimental results from underground particle detectors searching for dark matter interactions.</p>
-                    </div>
+        <div class="grid" id="content-container">
+            <!-- Science cards -->
+            <div class="card" data-category="science">
+                <img src="/api/placeholder/400/200" alt="Neuroscience Research">
+                <div class="card-content">
+                    <div class="card-category">Science</div>
+                    <h3 class="card-title">Neural Networks and Consciousness</h3>
+                    <p class="card-description">Recent developments in understanding consciousness through the lens of computational neuroscience.</p>
                 </div>
             </div>
-        </div>
+            <div class="card" data-category="science">
+                <img src="/api/placeholder/400/200" alt="Physics Discovery">
+                <div class="card-content">
+                    <div class="card-category">Science</div>
+                    <h3 class="card-title">Dark Matter Detection</h3>
+                    <p class="card-description">Latest experimental results from underground particle detectors searching for dark matter interactions.</p>
+                </div>
+            </div>
 
-        <div id="literature" class="tab-content">
-            <div class="grid">
-                <!-- Literature cards -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" alt="Recent Scientific Literature">
-                    <div class="card-content">
-                        <div class="card-category">Scientific Literature</div>
-                        <h3 class="card-title">Quantum Computing Breakthrough</h3>
-                        <p class="card-description">A fascinating paper on quantum supremacy and its implications for future computing paradigms.</p>
-                    </div>
+            <!-- Literature cards -->
+            <div class="card" data-category="literature">
+                <img src="/api/placeholder/400/200" alt="Recent Scientific Literature">
+                <div class="card-content">
+                    <div class="card-category">Scientific Literature</div>
+                    <h3 class="card-title">Quantum Computing Breakthrough</h3>
+                    <p class="card-description">A fascinating paper on quantum supremacy and its implications for future computing paradigms.</p>
                 </div>
             </div>
-        </div>
 
-        <div id="art" class="tab-content">
-            <div class="grid">
-                <!-- Art cards -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" alt="Museum Exhibition">
-                    <div class="card-content">
-                        <div class="card-category">Art</div>
-                        <h3 class="card-title">Modern Art at MoMA</h3>
-                        <p class="card-description">Exploring the intersection of technology and traditional artistic expression in contemporary works.</p>
-                    </div>
+            <!-- Art cards -->
+            <div class="card" data-category="art">
+                <img src="/api/placeholder/400/200" alt="Museum Exhibition">
+                <div class="card-content">
+                    <div class="card-category">Art</div>
+                    <h3 class="card-title">Modern Art at MoMA</h3>
+                    <p class="card-description">Exploring the intersection of technology and traditional artistic expression in contemporary works.</p>
                 </div>
             </div>
-        </div>
 
-        <div id="poetry" class="tab-content">
-            <div class="grid">
-                <!-- Poetry cards -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" alt="Poetry Collection">
-                    <div class="card-content">
-                        <div class="card-category">Poetry</div>
-                        <h3 class="card-title">Ocean Vuong's Time is a Mother</h3>
-                        <p class="card-description">A powerful collection that explores loss, memory, and the immigrant experience.</p>
-                    </div>
+            <!-- Poetry cards -->
+            <div class="card" data-category="poetry">
+                <img src="/api/placeholder/400/200" alt="Poetry Collection">
+                <div class="card-content">
+                    <div class="card-category">Poetry</div>
+                    <h3 class="card-title">Ocean Vuong's Time is a Mother</h3>
+                    <p class="card-description">A powerful collection that explores loss, memory, and the immigrant experience.</p>
                 </div>
             </div>
-        </div>
 
-        <div id="music" class="tab-content">
-            <div class="grid">
-                <!-- Music cards -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" alt="Music Album">
-                    <div class="card-content">
-                        <div class="card-category">Music</div>
-                        <h3 class="card-title">Contemporary Classical</h3>
-                        <p class="card-description">Discovering the evolution of classical music in the modern era through innovative compositions.</p>
-                    </div>
+            <!-- Music cards -->
+            <div class="card" data-category="music">
+                <img src="/api/placeholder/400/200" alt="Music Album">
+                <div class="card-content">
+                    <div class="card-category">Music</div>
+                    <h3 class="card-title">Contemporary Classical</h3>
+                    <p class="card-description">Discovering the evolution of classical music in the modern era through innovative compositions.</p>
                 </div>
             </div>
         </div>
@@ -283,30 +257,36 @@
     </footer>
 
     <script>
-        // Clone all cards to the "All" tab
         document.addEventListener('DOMContentLoaded', function() {
-            const allTabContent = document.querySelector('#all .grid');
+            const navLinks = document.querySelectorAll('.nav-link');
             const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                allTabContent.appendChild(card.cloneNode(true));
-            });
 
-            // Tab functionality
-            const tabs = document.querySelectorAll('.nav-link');
-            const tabContents = document.querySelectorAll('.tab-content');
+            function filterCards(category) {
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding content
-                    tab.classList.add('active');
-                    const tabId = tab.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Remove active class from all links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    e.target.classList.add('active');
+                    
+                    // Filter cards based on category
+                    const category = e.target.dataset.category;
+                    filterCards(category);
                 });
             });
+
+            // Initialize with "all" category active
+            filterCards('all');
         });
     </script>
 </body>
