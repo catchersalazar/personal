@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catcher Salazar's personal landing page showcasing curated interests in science, literature, art, poetry, and music">
     <title>Catcher Salazar | Curator of Interests</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
     <style>
         :root {
             --primary-color: #2d3436;
@@ -24,7 +20,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--background-color);
             color: var(--primary-color);
             line-height: 1.6;
@@ -49,7 +45,6 @@
         h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
         }
 
         .subtitle {
@@ -62,56 +57,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
-        }
-
-        .grid {
-            margin: 2rem 0;
-        }
-
-        .card {
-            background: var(--card-color);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            break-inside: avoid;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            width: calc(33.333% - 20px);
-            margin: 10px;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .card-category {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-description {
-            color: var(--secondary-color);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
         }
 
         .navigation {
@@ -136,25 +81,51 @@
             background-color: rgba(0,184,148,0.1);
         }
 
-        @media (max-width: 1024px) {
-            .card {
-                width: calc(50% - 20px);
-            }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .card {
-                width: calc(100% - 20px);
-                margin-bottom: 1rem;
-            }
+        .card {
+            background: var(--card-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-            .navigation {
-                gap: 1rem;
-            }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-category {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
         }
 
         footer {
@@ -165,16 +136,22 @@
             color: var(--secondary-color);
         }
 
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--secondary-color);
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .navigation {
+                gap: 1rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="images/profile.jpg" alt="Catcher Salazar" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+        <img src="https://via.placeholder.com/150" alt="Catcher Salazar" class="profile-img">
         <h1>Catcher Salazar</h1>
         <p class="subtitle">Curator of Ideas & Inspiration</p>
         <nav class="navigation">
@@ -190,7 +167,7 @@
         <div class="grid">
             <!-- Science Cards -->
             <div class="card">
-                <img src="images/neuroscience.jpg" alt="Neuroscience Research" onerror="this.src='https://via.placeholder.com/400x200'">
+                <img src="https://via.placeholder.com/400x200" alt="Neuroscience Research">
                 <div class="card-content">
                     <div class="card-category">Science</div>
                     <h3 class="card-title">Neural Networks and Consciousness</h3>
@@ -199,7 +176,7 @@
             </div>
 
             <div class="card">
-                <img src="images/physics.jpg" alt="Physics Discovery" onerror="this.src='https://via.placeholder.com/400x200'">
+                <img src="https://via.placeholder.com/400x200" alt="Physics Discovery">
                 <div class="card-content">
                     <div class="card-category">Science</div>
                     <h3 class="card-title">Dark Matter Detection</h3>
@@ -209,7 +186,7 @@
 
             <!-- Literature Card -->
             <div class="card">
-                <img src="images/literature.jpg" alt="Recent Scientific Literature" onerror="this.src='https://via.placeholder.com/400x200'">
+                <img src="https://via.placeholder.com/400x200" alt="Recent Scientific Literature">
                 <div class="card-content">
                     <div class="card-category">Scientific Literature</div>
                     <h3 class="card-title">Quantum Computing Breakthrough</h3>
@@ -219,7 +196,7 @@
 
             <!-- Art Card -->
             <div class="card">
-                <img src="images/art.jpg" alt="Museum Exhibition" onerror="this.src='https://via.placeholder.com/400x200'">
+                <img src="https://via.placeholder.com/400x200" alt="Museum Exhibition">
                 <div class="card-content">
                     <div class="card-category">Art</div>
                     <h3 class="card-title">Modern Art at MoMA</h3>
@@ -229,7 +206,7 @@
 
             <!-- Poetry Card -->
             <div class="card">
-                <img src="images/poetry.jpg" alt="Poetry Collection" onerror="this.src='https://via.placeholder.com/400x200'">
+                <img src="https://via.placeholder.com/400x200" alt="Poetry Collection">
                 <div class="card-content">
                     <div class="card-category">Poetry</div>
                     <h3 class="card-title">Ocean Vuong's Time is a Mother</h3>
@@ -239,7 +216,7 @@
 
             <!-- Music Card -->
             <div class="card">
-                <img src="images/music.jpg" alt="Music Album" onerror="this.src='https://via.placeholder.com/400x200'">
+                <img src="https://via.placeholder.com/400x200" alt="Music Album">
                 <div class="card-content">
                     <div class="card-category">Music</div>
                     <h3 class="card-title">Contemporary Classical</h3>
@@ -252,30 +229,5 @@
     <footer>
         <p>© 2025 Catcher Salazar. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Initialize Masonry grid
-        document.addEventListener('DOMContentLoaded', function() {
-            var grid = document.querySelector('.grid');
-            var msnry;
-
-            // Initialize Masonry after all images are loaded
-            imagesLoaded(grid, function() {
-                msnry = new Masonry(grid, {
-                    itemSelector: '.card',
-                    columnWidth: '.card',
-                    percentPosition: true,
-                    gutter: 20
-                });
-            });
-
-            // Update layout when window is resized
-            window.addEventListener('resize', function() {
-                if (msnry) {
-                    msnry.layout();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
