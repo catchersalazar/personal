@@ -5,20 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catcher Salazar | Curated Interests</title>
     <style>
-        /* All existing CSS styles remain the same */
         :root {
-            --primary-color: #2d3436;
-            --secondary-color: #636e72;
-            --tertiary-color: #E30B5D;
-            --accent-color: #00b894;
-            --background-color: #f5f6fa;
+            --primary-color: #1a1a1a;
+            --secondary-color: #666666;
+            --accent-color: #c7a17a;
+            --background-color: #f5f5f5;
             --card-color: #ffffff;
+            --gradient-start: #c7a17a;
+            --gradient-end: #9b785c;
+            --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glass-effect: rgba(255, 255, 255, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        ::selection {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
         }
 
         body {
@@ -29,103 +54,206 @@
         }
 
         header {
+            position: relative;
             text-align: center;
-            padding: 4rem 2rem;
-            background-color: var(--card-color);
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: white;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23ffffff20" d="M45,-51.6C57.9,-37.3,67.3,-18.7,67.4,0.1C67.5,18.8,58.2,37.7,45.3,51.8C32.3,65.9,16.2,75.2,-1.9,77.1C-20,79,-40,73.5,-54.3,59.4C-68.5,45.3,-77,22.7,-76.1,1C-75.2,-20.6,-65,-41.2,-50,-55.5C-35,-69.7,-17.5,-77.7,0.6,-78.3C18.7,-79,37.3,-72.4,45,-51.6Z" transform="translate(100 100)"/></svg>') no-repeat center center;
+            opacity: 0.1;
+            z-index: 0;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2));
+            z-index: 2;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .subtitle {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         .navigation {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .nav-link {
-            color: var(--secondary-color);
+            color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+        }
+
+        .nav-link:hover::before {
+            transform: translateX(100%);
+            transition: 0.5s;
         }
 
         .nav-link.active {
-            color: white;
-            background-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .nav-link:hover {
-            color: var(--accent-color);
-            background-color: rgba(0,184,148,0.1);
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        .nav-link.active:hover {
-            color: white;
-            background-color: var(--accent-color);
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             padding: 2rem 0;
-            justify-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .card {
             background: var(--card-color);
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            width: 100%;
-            max-width: 350px;
+            box-shadow: var(--box-shadow);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
 
         .card img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .card-category {
@@ -133,52 +261,101 @@
             color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         .card-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         .card-description {
             color: var(--secondary-color);
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .card-citation {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--tertiary-color);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Modal styles for subpage content */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             margin-top: 4rem;
-            background-color: var(--card-color);
-            color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
             }
-            .navigation {
-                gap: 1rem;
-            }
             .grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* New styles for handling content visibility */
-        .content-grid {
-            display: none;
-        }
-
-        .content-grid.active {
-            display: grid;
+            .modal {
+                padding: 1rem;
+            }
+            .modal-content {
+                margin: 1rem;
+            }
         }
     </style>
 </head>
@@ -201,7 +378,7 @@
     <div class="container">
         <div class="grid" id="content-container">
             <!-- Science cards -->
-            <div class="card" data-category="science">
+            <a href="#" class="card" data-category="science">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/Heartbeat%20Figure.png?raw=true" alt="Figure Image">
                 <div class="card-content">
                     <div class="card-category">Science</div>
@@ -209,8 +386,9 @@
                     <p class="card-description">Megason and Cohen Labs collaborate to detect the first heartbeat in zebrafish by elegantly combining methods across disciplines.</p>
                     <p class="card-citation">Jia et al., Megason and Cohen, Nature (2023)</p>               
                 </div>
-            </div>
-            <div class="card" data-category="science">
+            </a>
+            
+            <a href="#" class="card" data-category="science">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/Adhesion%20code.png?raw=true" alt="Adhesion Code">
                 <div class="card-content">
                     <div class="card-category">Science</div>
@@ -218,8 +396,9 @@
                     <p class="card-description">The Megason Lab uses innovative imaging techniques combined with micropipettes, aspirating air to hold onto single cells, to provide the first direct biophysical evidence for the differential adhesion hypothesis.</p>
                     <p class="card-citation">Tsai et al., Megason, Science (2020)</p>
                 </div>
-            </div>
-            <div class="card" data-category="science">
+            </a>
+
+            <a href="#" class="card" data-category="science">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/Gastruloids.png?raw=true" alt="Gastruloids">
                 <div class="card-content">
                     <div class="card-category">Science</div>
@@ -227,42 +406,46 @@
                     <p class="card-description">The Toettcher Lab combines gastruloids with a synthetic signaling reporter, which itself combines Cre lineage tracing with signaling reporters, to show that symmetry breaking in gastruloids is driven by differential adhesion downstream of developmental signaling pathways.</p>
                     <p class="card-citation">McNamara et al., Toettcher, Nat. Cel. Bio. (2024)</p>
                 </div>
-            </div>
-
-            <!-- Literature cards -->
+            </a>
 
             <!-- Mixed Media cards -->
-            <div class="card" data-category="mixed media">
+            <a href="#" class="card" data-category="mixed media">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/Scavengers.jpg?raw=true" alt="Scavengers">
                 <div class="card-content">
                     <div class="card-category">Television</div>
                     <h3 class="card-title">Scavengers Reign</h3>
                     <p class="card-description">A futuristic story of shipmates stranded on an alien planet, beautiful yet very dangerous. Unbelievably creative work, the imagination it takes to build a world that actually feels alien is astounding and inspiring.</p>
                 </div>
-            </div>
+            </a>
 
             <!-- Art cards -->
-            <div class="card" data-category="art">
+            <a href="#" class="card" data-category="art">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/OSGEMEOS.jpg?raw=true" alt="Museum Exhibition">
                 <div class="card-content">
                     <div class="card-category">Art</div>
                     <h3 class="card-title">OSGEMEOS at the Hirshhorn Museum</h3>
                     <p class="card-description">Twins from Sao Paulo start out as rap-inspired graffiti artists and are recognized, propelled to the international stage making murals, paintings, sculptures, and more. They created their own fantasy world in which much of their art lives in--the imagination and creativity they possess is inspiring.</p>
                 </div>
-            </div>
+            </a>
 
             <!-- Poetry cards -->
-            <div class="card" data-category="poetry">
+            <a href="#" class="card" data-category="poetry">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/Wislawa.png?raw=true" alt="Wislawa">
                 <div class="card-content">
                     <div class="card-category">Poetry</div>
                     <h3 class="card-title">Wislawa Szymborska's Nobel Prize Speech</h3>
-                    <p class="card-description">A beautiful speech from a beautiful poet about what it means to be a poet in today's world, and the importance of being able to say "I don't know"--for poets and scientists alike. "This is why I value that little phrase “I don’t know” so highly. It’s small, but it flies on mighty wings. It expands our lives to include the spaces within us as well as those outer expanses in which our tiny Earth hangs suspended."</p>
+                    <p class="card-description">A beautiful speech from a beautiful poet about what it means to be a poet in today's world, and the importance of being able to say "I don't know"--for poets and scientists alike. "This is why I value that little phrase "I don't know" so highly. It's small, but it flies on mighty wings. It expands our lives to include the spaces within us as well as those outer expanses in which our tiny Earth hangs suspended."</p>
                 </div>
-            </div>
+            </a>
+        </div>
+    </div>
 
-            <!-- Music cards -->
-        
+    <!-- Modal for subpage content -->
+    <div class="modal" id="content-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img class="modal-image" src="" alt="">
+            <div class="modal-body"></div>
         </div>
     </div>
 
@@ -271,37 +454,4 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const cards = document.querySelectorAll('.card');
-
-            function filterCards(category) {
-                cards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    e.target.classList.add('active');
-                    
-                    // Filter cards based on category
-                    const category = e.target.dataset.category;
-                    filterCards(category);
-                });
-            });
-
-            // Initialize with "all" category active
-            filterCards('all');
-        });
-    </script>
-</body>
-</html>
+        document.addEventListener('DOMContentLoaded', function()
