@@ -398,139 +398,47 @@
                 </div>
             </a>
 
-            <a href="#" class="card" data-category="science">
-                <img src="https://github.com/catchersalazar/personal/blob/main/images/Gastruloids.png?raw=true" alt="Gastruloids">
-                <div class="card-content">
-                    <div class="card-category">Science</div>
-                    <h3 class="card-title">Symmetry Breaking in Gastruloids is Driven by Differential Adhesion</h3>
-                    <p class="card-description">The Toettcher Lab combines gastruloids with a synthetic signaling reporter, which itself combines Cre lineage tracing with signaling reporters, to show that symmetry breaking in gastruloids is driven by differential adhesion downstream of developmental signaling pathways.</p>
-                    <p class="card-citation">McNamara et al., Toettcher, Nat. Cel. Bio. (2024)</p>
-                </div>
-            </a>
-
-            <!-- Mixed Media cards -->
             <a href="#" class="card" data-category="mixed media">
                 <img src="https://github.com/catchersalazar/personal/blob/main/images/Scavengers.jpg?raw=true" alt="Scavengers">
                 <div class="card-content">
-                    <div class="card-category">Television</div>
+                    <div class="card-category">Mixed Media</div>
                     <h3 class="card-title">Scavengers Reign</h3>
-                    <p class="card-description">A futuristic story of shipmates stranded on an alien planet, beautiful yet very dangerous. Unbelievably creative work, the imagination it takes to build a world that actually feels alien is astounding and inspiring.</p>
+                    <p class="card-description">A futuristic story of shipmates stranded on an alien planet, beautiful yet very dangerous.</p>
                 </div>
             </a>
-
-            <!-- Art cards -->
-            <a href="#" class="card" data-category="art">
-                <img src="https://github.com/catchersalazar/personal/blob/main/images/OSGEMEOS.jpg?raw=true" alt="Museum Exhibition">
-                <div class="card-content">
-                    <div class="card-category">Art</div>
-                    <h3 class="card-title">OSGEMEOS at the Hirshhorn Museum</h3>
-                    <p class="card-description">Twins from Sao Paulo start out as rap-inspired graffiti artists and are recognized, propelled to the international stage making murals, paintings, sculptures, and more. They created their own fantasy world in which much of their art lives in--the imagination and creativity they possess is inspiring.</p>
-                </div>
-            </a>
-
-            <!-- Poetry cards -->
-            <a href="#" class="card" data-category="poetry">
-                <img src="https://github.com/catchersalazar/personal/blob/main/images/Wislawa.png?raw=true" alt="Wislawa">
-                <div class="card-content">
-                    <div class="card-category">Poetry</div>
-                    <h3 class="card-title">Wislawa Szymborska's Nobel Prize Speech</h3>
-                    <p class="card-description">A beautiful speech from a beautiful poet about what it means to be a poet in today's world, and the importance of being able to say "I don't know"--for poets and scientists alike. "This is why I value that little phrase "I don't know" so highly. It's small, but it flies on mighty wings. It expands our lives to include the spaces within us as well as those outer expanses in which our tiny Earth hangs suspended."</p>
-                </div>
-            </a>
+            
+            <!-- Add more cards for other categories as needed -->
         </div>
     </div>
 
+    <footer>
+        <p>© 2025 Catcher Salazar. All rights reserved.</p>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all necessary elements
-            const navLinks = document.querySelectorAll('.nav-link');
-            const cards = document.querySelectorAll('.card');
-            const modal = document.getElementById('content-modal');
-            const modalContent = modal.querySelector('.modal-content');
-            const modalImage = modal.querySelector('.modal-image');
-            const modalBody = modal.querySelector('.modal-body');
-            const modalClose = modal.querySelector('.modal-close');
-
-            // Filter functionality
-            function filterCards(category) {
-                cards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    if (category === 'all' || cardCategory === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            // Add click event listeners to navigation links
+        document.addEventListener("DOMContentLoaded", () => {
+            const navLinks = document.querySelectorAll(".nav-link");
+            const cards = document.querySelectorAll(".card");
+            
             navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
+                link.addEventListener("click", () => {
+                    // Remove 'active' class from all links
+                    navLinks.forEach(nav => nav.classList.remove("active"));
                     
-                    // Update active state
-                    navLinks.forEach(navLink => navLink.classList.remove('active'));
-                    link.classList.add('active');
+                    // Add 'active' class to clicked link
+                    link.classList.add("active");
                     
-                    // Filter cards
-                    const category = link.getAttribute('data-category');
-                    filterCards(category);
+                    const category = link.getAttribute("data-category");
+                    
+                    // Show or hide cards based on category
+                    cards.forEach(card => {
+                        if (category === "all" || card.getAttribute("data-category") === category) {
+                            card.style.display = "block";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
                 });
-            });
-
-            // Modal functionality
-            cards.forEach(card => {
-                card.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    
-                    // Get content from the card
-                    const cardImage = card.querySelector('img').src;
-                    const cardTitle = card.querySelector('.card-title').textContent;
-                    const cardDescription = card.querySelector('.card-description').textContent;
-                    const cardCategory = card.querySelector('.card-category').textContent;
-                    const cardCitation = card.querySelector('.card-citation')?.textContent || '';
-
-                    // Populate modal
-                    modalImage.src = cardImage;
-                    modalBody.innerHTML = `
-                        <div class="card-category">${cardCategory}</div>
-                        <h2 class="card-title">${cardTitle}</h2>
-                        <p class="card-description">${cardDescription}</p>
-                        ${cardCitation ? `<p class="card-citation">${cardCitation}</p>` : ''}
-                    `;
-                    
-                    // Show modal with animation
-                    modal.style.display = 'block';
-                    setTimeout(() => {
-                        modal.classList.add('active');
-                    }, 10);
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            // Close modal functionality
-            function closeModal() {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 300);
-            }
-
-            modalClose.addEventListener('click', closeModal);
-
-            // Close modal when clicking outside
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Close modal on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.style.display === 'block') {
-                    closeModal();
-                }
             });
         });
     </script>
